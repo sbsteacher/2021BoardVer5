@@ -31,7 +31,7 @@ public class UserLoginServlet extends HttpServlet {
 			request.setAttribute("errMsg", "아이디를 확인해 주세요.");		
 		} else if(BCrypt.checkpw(upw, result.getUpw())) { 
 			//아이디 있음 & 비밀번호 체크성공
-			result.setUpw(null);			
+			result.setUpw(null);
 			HttpSession hs = request.getSession();
 			hs.setAttribute("loginUser", result);			
 			response.sendRedirect("/board/list");
