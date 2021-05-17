@@ -6,12 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>리스트</title>
-<link rel="stylesheet" href="/res/css/boardList.css">
-<script defer src="/res/js/boardList.js"></script>
+<link rel="stylesheet" href="/res/css/boardList.css?ver=3">
+<script defer src="/res/js/boardList.js?ver=7"></script>
 </head>
 <body>
 	<h1>리스트</h1>
-	<h1>${sessionScope.loginUser.unm} 반갑습니다.</h1>
+	<h1>${sessionScope.loginUser.unm} (${sessionScope.loginUser.uid}) 반갑습니다.</h1>
 	<div>		
 		 <a href="/user/logout">로그아웃</a>
 	</div>
@@ -23,8 +23,7 @@
 				<th>글쓴이</th>
 				<th>작성일시</th>				
 			</tr>
-			<c:forEach items="${requestScope.list}" 
-				var="item">
+			<c:forEach items="${requestScope.list}" var="item">
 				<tr class="record" onclick="moveToDetail(${item.iboard})">
 					<td>${item.iboard}</td>
 					<td>${item.title}</td>

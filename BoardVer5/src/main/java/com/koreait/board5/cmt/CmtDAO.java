@@ -51,13 +51,13 @@ public class CmtDAO {
 			
 			while(rs.next()) {
 				CmtVO vo = new CmtVO();
-				list.add(vo);
-				
 				vo.setIcmt(rs.getInt("icmt"));
 				vo.setCmt(rs.getString("cmt"));
 				vo.setRegdate(rs.getString("regdate"));
 				vo.setIuser(rs.getInt("iuser"));
 				vo.setUnm(rs.getString("unm"));
+				
+				list.add(vo);
 			}
 			
 		} catch(Exception e) {			
@@ -66,6 +66,24 @@ public class CmtDAO {
 			DBUtils.close(con, ps, rs);
 		}
 		return list;
+	}	
+	
+	public static void delCmt(CmtVO param) {
+		Connection con = null;
+		PreparedStatement ps = null;		
+		String sql = " DELETE FROM t_board_cmt "
+				+ " WHERE icmt = ? AND iuser = ? ";		
+		try {
+			con = DBUtils.getCon();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, param.getIcmt());
+			ps.setInt(2, param.getIuser());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.close(con, ps);
+		}
 	}
 }
 
