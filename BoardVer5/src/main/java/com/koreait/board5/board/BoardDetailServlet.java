@@ -18,8 +18,8 @@ public class BoardDetailServlet extends HttpServlet {
 		int iboard = MyUtils.getParamInt("iboard", request);
 		BoardVO param = new BoardVO();
 		param.setIboard(iboard);		
-		request.setAttribute("data", BoardDAO.selBoard(param));
-		request.setAttribute("cmtList", CmtDAO.selCmtList(iboard));
+		request.setAttribute("data", BoardDAO.selBoard(param)); //글의 정보
+		request.setAttribute("cmtList", CmtDAO.selCmtList(iboard)); //댓글 리스트 정보
 		MyUtils.openJSP("board/boardDetail", request, response);
 	}
 }

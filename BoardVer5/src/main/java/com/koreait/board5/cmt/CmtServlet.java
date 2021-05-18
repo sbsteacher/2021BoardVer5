@@ -27,17 +27,24 @@ public class CmtServlet extends HttpServlet {
 		response.sendRedirect("detail?iboard=" + iboard);
 	}
 	
+	//insert, update 같이 사용할꺼임
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int icmt = MyUtils.getParamInt("icmt", request);
 		int iboard = MyUtils.getParamInt("iboard", request);
 		String cmt = request.getParameter("cmt");		
 		int iuser = MyUtils.getLoginUserPk(request);
 		
-		CmtVO param = new CmtVO();
-		param.setIboard(iboard);
+		CmtVO param = new CmtVO();		
 		param.setCmt(cmt);
 		param.setIuser(iuser);
 		
-		CmtDAO.insCmt(param);
+		if(icmt != 0) { //수정
+			param.setIcmt(icmt);
+			CmtDAO.updCmt(param);
+		} else { //등록
+			param.setIboard(iboard);
+			CmtDAO.insCmt(param);
+		}		
 		
 		response.sendRedirect("detail?iboard="+iboard);
 	}
