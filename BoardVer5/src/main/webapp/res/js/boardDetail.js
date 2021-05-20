@@ -1,5 +1,5 @@
-var insFrmElem = document.querySelector('#insFrm');
-var updFrmElem = document.querySelector('#updFrm');
+
+
 
 //댓글 삭제
 function delCmt(iboard, icmt) {
@@ -10,21 +10,26 @@ function delCmt(iboard, icmt) {
 	}
 }
 
+
+
+var insFrmElem = document.querySelector('#insFrm');
+var updFrmElem = document.querySelector('#updFrm');
+
 //댓글 수정
-function updCmt(icmt, cmt) {	
+function updCmt(icmt, cmt) {
 	console.log('icmt : %s', icmt);
 	console.log('cmt : %s', cmt);
-	updFrm.icmt.value = icmt;
-	updFrm.cmt.value = cmt;
+	updFrmElem.icmt.value = icmt;
+	updFrmElem.cmt.value = cmt;
 	
-	insFrm.className = 'hidden';
-	updFrm.className = '';
+	insFrmElem.className = 'hidden';
+	updFrmElem.className = '';
 }
 
 
 function showInsFrm() {	
-	insFrm.className = '';
-	updFrm.className = 'hidden';
+	insFrmElem.className = '';
+	updFrmElem.className = 'hidden';
 }
 
 

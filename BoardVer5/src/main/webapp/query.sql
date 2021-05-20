@@ -7,3 +7,12 @@ CREATE TABLE t_board_cmt (
 	FOREIGN KEY (iboard) REFERENCES t_board(iboard),
 	FOREIGN KEY (iuser) REFERENCES t_user(iuser)
 );
+
+CREATE TABLE t_board(
+	iboard INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	title VARCHAR(100) NOT NULL,
+	ctnt VARCHAR(2000) NOT NULL,
+	iuser INT UNSIGNED,
+	regdt DATETIME DEFAULT NOW(),
+	FOREIGN KEY (iuser) REFERENCES t_user(iuser)
+);
